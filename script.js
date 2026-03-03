@@ -804,19 +804,32 @@ const Testimonials = (() => {
 
   function goTo(index) {
   if (!track) return;
-  const cards = track.children.length;
-  total = Math.ceil(cards / perView);
+
+  // On phones: no sliding, show simple list
+  if (window.innerWidth < 640) {
+    track.style.transform = 'none';
+    current = 0;
+    updateDots(0);
+    if (prevBtn) prevBtn.disabled = true;
+    if (nextBtn) nextBtn.disabled = true;
+    return;
+  }
+
+  const cards = track.children;
+  total = Math.ceil(cards.length / perView);
   current = Math.max(0, Math.min(index, total - 1));
 
-  // each slide = 100% width
-  track.style.transform = `translateX(-${current * 100}%)`;
-  track.style.transition = 'transform 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94)';
+  track.style.transform =
+    `translateX(-${current * 100}%)`;
+  track.style.transition =
+    'transform 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94)';
 
   updateDots(current);
 
   if (prevBtn) prevBtn.disabled = current === 0;
   if (nextBtn) nextBtn.disabled = current >= total - 1;
 }
+
 
   function next() {
     const cards = track ? track.children.length : 0;
@@ -840,18 +853,19 @@ const Testimonials = (() => {
   }
 
   function handleResize() {
-    const newPerView = getPerView();
-    if (newPerView !== perView) {
-      perView = newPerView;
-      if (track) {
-        const cards = track.children.length;
-        const t = Math.ceil(cards / perView);
-        buildDots(t);
-        current = 0;
-        goTo(0);
-      }
+  const newPerView = getPerView();
+  if (newPerView !== perView) {
+    perView = newPerView;
+    if (track) {
+      const cards = track.children.length;
+      const t = Math.ceil(cards / perView);
+      buildDots(t);
+      current = 0;
+      goTo(0);  // ensure layout matches new mode
     }
   }
+}
+
 
   function init() {
     if (!track) return;
