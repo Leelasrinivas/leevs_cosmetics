@@ -30,9 +30,9 @@
   --text-light:        #f5f0e8;
   --text-lighter:      rgba(245, 240, 232, 0.7);
 
-  --font-serif:        'Cormorant Garamond', Georgia, serif;
-  --font-display:      'Cinzel', 'Times New Roman', serif;
-  --font-body:         'Jost', -apple-system, sans-serif;
+--font-serif:        'Playfair Display', 'Cormorant Garamond', serif;
+  --font-display:      'Cinzel', serif;
+  --font-body:         'Inter', -apple-system, sans-serif;
 
   --nav-height:        72px;
   --announce-height:   40px;
@@ -2995,3 +2995,5 @@ p {
     margin-top: 1.75rem;
   }
 }
+
+
