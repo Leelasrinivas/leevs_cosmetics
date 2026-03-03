@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset
+  xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xmlns:image="http://www.google.com/schemas/sitemap-image/1.1"
+  xsi:schemaLocation="
+    http://www.sitemaps.org/schemas/sitemap/0.9
+    http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
+
+  <!-- Homepage -->
+  <url>
+    <loc>https://leevs.in/</loc>
+    <lastmod>2026-03-03</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+    <image:image>
+      <image:loc>https://leevs.in/assets/og-image.jpg</image:loc>
+      <image:title>Leevs Natural Cosmetics — Pure Botanical Luxury from Tirupati</image:title>
+      <image:caption>Leevs luxury natural cosmetics handcrafted in Tirupati, Andhra Pradesh</image:caption>
+    </image:image>
+  </url>
+
+  <!-- Hair Oil Product -->
+  <url>
+    <loc>https://leevs.in/#hair-oil</loc>
+    <lastmod>2026-03-03</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+    <image:image>
+      <image:loc>https://leevs.in/assets/hair-oil.jpg</image:loc>
+      <image:title>Leevs Botanical Hair Oil — Coconut, Rosemary, Curry Leaves, Fenugreek, Aloe Vera</image:title>
+      <image:caption>Natural hair oil with five botanical extracts for hair fall control and growth</image:caption>
+    </image:image>
+  </url>
+
+  <!-- Face Wash Product -->
+  <url>
+    <loc>https://leevs.in/#face-wash</loc>
+    <lastmod>2026-03-03</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+    <image:image>
+      <image:loc>https://leevs.in/assets/face-wash.jpg</image:loc>
+      <image:title>Leevs Rice Water Face Wash — Rice Water, Aloe Vera, Neem</image:title>
+      <image:caption>Brightening face wash with fermented rice water and sacred neem</image:caption>
+    </image:image>
+  </url>
+
+  <!-- Botanicals / Ingredients -->
+  <url>
+    <loc>https://leevs.in/#ingredients</loc>
+    <lastmod>2026-03-03</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <!-- About / Our Story -->
+  <url>
+    <loc>https://leevs.in/#about</loc>
+    <lastmod>2026-03-03</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.6</priority>
+  </url>
+
+  <!-- Contact -->
+  <url>
+    <loc>https://leevs.in/contact</loc>
+    <lastmod>2026-03-03</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.5</priority>
+  </url>
+
+  <!-- Privacy Policy -->
+  <url>
+    <loc>https://leevs.in/privacy</loc>
+    <lastmod>2026-03-03</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.3</priority>
+  </url>
+
+  <!-- Terms of Service -->
+  <url>
+    <loc>https://leevs.in/terms</loc>
+    <lastmod>2026-03-03</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.3</priority>
+  </url>
+
+  <!-- Shipping Policy -->
+  <url>
+    <loc>https://leevs.in/shipping</loc>
+    <lastmod>2026-03-03</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.3</priority>
+  </url>
+
+  <!-- Returns Policy -->
+  <url>
+    <loc>https://leevs.in/returns</loc>
+    <lastmod>2026-03-03</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.3</priority>
+  </url>
+
+</urlset>

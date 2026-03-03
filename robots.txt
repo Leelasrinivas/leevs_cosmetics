@@ -1,0 +1,50 @@
+# robots.txt — leevs.in
+# Leevs Natural Cosmetics, Tirupati, Andhra Pradesh
+
+User-agent: *
+Allow: /
+Allow: /collection
+Allow: /ingredients
+Allow: /about
+Allow: /contact
+Allow: /privacy
+Allow: /terms
+Allow: /shipping
+Allow: /returns
+
+# Disallow transactional and private pages
+Disallow: /checkout
+Disallow: /order-confirmation
+Disallow: /search
+Disallow: /admin
+Disallow: /api/
+Disallow: /cart
+Disallow: /*.json$
+Disallow: /cdn-cgi/
+
+# Disallow internal query strings
+Disallow: /*?*utm_
+Disallow: /*?*ref=
+Disallow: /*?*session=
+
+# Sitemap location
+Sitemap: https://leevs.in/sitemap.xml
+
+# Crawl delay (polite crawling)
+Crawl-delay: 10
+
+# Block bad bots
+User-agent: AhrefsBot
+Disallow: /
+
+User-agent: SemrushBot
+Disallow: /
+
+User-agent: DotBot
+Disallow: /
+
+User-agent: MJ12bot
+Disallow: /
+
+User-agent: BLEXBot
+Disallow: /

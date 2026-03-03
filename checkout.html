@@ -1,0 +1,564 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+
+  <title>Checkout — Leevs Natural Cosmetics</title>
+  <meta name="description" content="Secure checkout for Leevs Natural Cosmetics. Pure botanical hair oil and face wash delivered across India." />
+  <meta name="robots" content="noindex, nofollow" />
+  <link rel="canonical" href="https://leevs.in/checkout" />
+
+  <!-- Security Headers -->
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self' https://fonts.googleapis.com https://fonts.gstatic.com https://checkout.razorpay.com; script-src 'self' 'unsafe-inline' https://checkout.razorpay.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; img-src 'self' data: https:; connect-src 'self' https://api.razorpay.com; frame-src https://api.razorpay.com;" />
+  <meta http-equiv="X-Content-Type-Options" content="nosniff" />
+  <meta http-equiv="Referrer-Policy" content="strict-origin-when-cross-origin" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Jost:wght@200;300;400;500&family=Cinzel:wght@400;500&display=swap" rel="stylesheet" />
+
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Cellipse cx='50' cy='50' rx='20' ry='40' fill='%232d5a27'/%3E%3C/svg%3E" />
+
+  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="checkout.css" />
+</head>
+<body class="checkout-body">
+
+  <a href="#checkout-main" class="skip-link">Skip to checkout</a>
+
+  <!-- Minimal Header -->
+  <header class="checkout-header" role="banner">
+    <div class="checkout-header-inner">
+      <a href="/" class="nav-logo checkout-logo" aria-label="Leevs — Return to shop">
+        <svg class="logo-leaf" viewBox="0 0 60 80" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <path d="M30 75 C10 55 2 35 5 15 C10 5 20 2 30 2 C40 2 50 5 55 15 C58 35 50 55 30 75Z" fill="currentColor" opacity="0.9"/>
+          <path d="M30 75 C30 55 30 35 30 10" stroke="rgba(255,255,255,0.3)" stroke-width="1" fill="none"/>
+        </svg>
+        <span class="logo-text">LEEVS</span>
+      </a>
+
+      <nav class="checkout-steps" aria-label="Checkout progress">
+        <ol role="list">
+          <li class="step active" data-step="1" aria-current="step">
+            <span class="step-num">1</span>
+            <span class="step-label">Information</span>
+          </li>
+          <li class="step-divider" aria-hidden="true"></li>
+          <li class="step" data-step="2">
+            <span class="step-num">2</span>
+            <span class="step-label">Shipping</span>
+          </li>
+          <li class="step-divider" aria-hidden="true"></li>
+          <li class="step" data-step="3">
+            <span class="step-num">3</span>
+            <span class="step-label">Payment</span>
+          </li>
+        </ol>
+      </nav>
+
+      <div class="checkout-secure-badge" aria-label="Secure checkout">
+        <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
+          <path d="M10 2L3 6v6c0 4.5 3.5 7.5 7 9 3.5-1.5 7-4.5 7-9V6L10 2z"/>
+        </svg>
+        <span>Secure Checkout</span>
+      </div>
+    </div>
+  </header>
+
+  <!-- Main Checkout Layout -->
+  <main id="checkout-main" class="checkout-main">
+    <div class="checkout-layout">
+
+      <!-- LEFT: Forms -->
+      <div class="checkout-forms" role="region" aria-label="Checkout forms">
+
+        <!-- STEP 1: Customer Information -->
+        <section class="checkout-step-panel active" id="step-1" aria-labelledby="step1-title">
+          <h1 id="step1-title" class="checkout-section-title">Customer Information</h1>
+
+          <form id="form-information" class="checkout-form" novalidate autocomplete="on">
+            <input type="hidden" name="csrf_token" id="csrf_info" />
+
+            <!-- Contact -->
+            <fieldset class="form-fieldset">
+              <legend class="fieldset-legend">Contact Details</legend>
+
+              <div class="form-row">
+                <div class="form-group">
+                  <label for="first-name">First Name <span class="required" aria-hidden="true">*</span></label>
+                  <input type="text" id="first-name" name="first_name"
+                    required maxlength="50" autocomplete="given-name"
+                    placeholder="First name"
+                    aria-required="true" />
+                  <span class="field-error" id="err-first-name" role="alert"></span>
+                </div>
+                <div class="form-group">
+                  <label for="last-name">Last Name <span class="required" aria-hidden="true">*</span></label>
+                  <input type="text" id="last-name" name="last_name"
+                    required maxlength="50" autocomplete="family-name"
+                    placeholder="Last name"
+                    aria-required="true" />
+                  <span class="field-error" id="err-last-name" role="alert"></span>
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label for="checkout-email">Email Address <span class="required" aria-hidden="true">*</span></label>
+                <input type="email" id="checkout-email" name="email"
+                  required maxlength="254" autocomplete="email"
+                  placeholder="your@email.com"
+                  aria-required="true" />
+                <span class="field-error" id="err-email" role="alert"></span>
+              </div>
+
+              <div class="form-group">
+                <label for="checkout-phone">Phone Number <span class="required" aria-hidden="true">*</span></label>
+                <div class="phone-input-wrap">
+                  <span class="phone-prefix" aria-hidden="true">+91</span>
+                  <input type="tel" id="checkout-phone" name="phone"
+                    required maxlength="10" autocomplete="tel-national"
+                    placeholder="9876543210"
+                    pattern="[6-9][0-9]{9}"
+                    aria-required="true"
+                    aria-describedby="phone-hint" />
+                </div>
+                <span class="field-hint" id="phone-hint">10-digit Indian mobile number</span>
+                <span class="field-error" id="err-phone" role="alert"></span>
+              </div>
+            </fieldset>
+
+            <!-- Shipping Address -->
+            <fieldset class="form-fieldset">
+              <legend class="fieldset-legend">Delivery Address</legend>
+
+              <div class="form-group">
+                <label for="address-line1">Address Line 1 <span class="required" aria-hidden="true">*</span></label>
+                <input type="text" id="address-line1" name="address_line1"
+                  required maxlength="200" autocomplete="address-line1"
+                  placeholder="House / Flat No., Street"
+                  aria-required="true" />
+                <span class="field-error" id="err-address1" role="alert"></span>
+              </div>
+
+              <div class="form-group">
+                <label for="address-line2">Address Line 2 <span class="optional">(Optional)</span></label>
+                <input type="text" id="address-line2" name="address_line2"
+                  maxlength="200" autocomplete="address-line2"
+                  placeholder="Apartment, landmark, area" />
+              </div>
+
+              <div class="form-row">
+                <div class="form-group">
+                  <label for="city">City <span class="required" aria-hidden="true">*</span></label>
+                  <input type="text" id="city" name="city"
+                    required maxlength="100" autocomplete="address-level2"
+                    placeholder="City"
+                    aria-required="true" />
+                  <span class="field-error" id="err-city" role="alert"></span>
+                </div>
+                <div class="form-group">
+                  <label for="pincode">PIN Code <span class="required" aria-hidden="true">*</span></label>
+                  <input type="text" id="pincode" name="pincode"
+                    required maxlength="6" autocomplete="postal-code"
+                    placeholder="517501"
+                    pattern="[1-9][0-9]{5}"
+                    inputmode="numeric"
+                    aria-required="true" />
+                  <span class="field-error" id="err-pincode" role="alert"></span>
+                </div>
+              </div>
+
+              <div class="form-row">
+                <div class="form-group">
+                  <label for="state">State <span class="required" aria-hidden="true">*</span></label>
+                  <select id="state" name="state" required autocomplete="address-level1" aria-required="true">
+                    <option value="" disabled selected>Select state</option>
+                    <option value="AP">Andhra Pradesh</option>
+                    <option value="AR">Arunachal Pradesh</option>
+                    <option value="AS">Assam</option>
+                    <option value="BR">Bihar</option>
+                    <option value="CG">Chhattisgarh</option>
+                    <option value="GA">Goa</option>
+                    <option value="GJ">Gujarat</option>
+                    <option value="HR">Haryana</option>
+                    <option value="HP">Himachal Pradesh</option>
+                    <option value="JK">Jammu & Kashmir</option>
+                    <option value="JH">Jharkhand</option>
+                    <option value="KA">Karnataka</option>
+                    <option value="KL">Kerala</option>
+                    <option value="MP">Madhya Pradesh</option>
+                    <option value="MH">Maharashtra</option>
+                    <option value="MN">Manipur</option>
+                    <option value="ML">Meghalaya</option>
+                    <option value="MZ">Mizoram</option>
+                    <option value="NL">Nagaland</option>
+                    <option value="OD">Odisha</option>
+                    <option value="PB">Punjab</option>
+                    <option value="RJ">Rajasthan</option>
+                    <option value="SK">Sikkim</option>
+                    <option value="TN">Tamil Nadu</option>
+                    <option value="TS">Telangana</option>
+                    <option value="TR">Tripura</option>
+                    <option value="UP">Uttar Pradesh</option>
+                    <option value="UK">Uttarakhand</option>
+                    <option value="WB">West Bengal</option>
+                    <option value="DL">Delhi</option>
+                    <option value="PY">Puducherry</option>
+                  </select>
+                  <span class="field-error" id="err-state" role="alert"></span>
+                </div>
+                <div class="form-group">
+                  <label for="country">Country</label>
+                  <input type="text" id="country" name="country"
+                    value="India" readonly
+                    autocomplete="country-name"
+                    aria-label="Country: India" />
+                </div>
+              </div>
+
+              <div class="form-group form-checkbox">
+                <input type="checkbox" id="save-address" name="save_address" />
+                <label for="save-address">Save this address for future orders</label>
+              </div>
+            </fieldset>
+
+            <div class="form-actions">
+              <a href="/" class="btn-link-back">
+                <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><polyline points="13 16 7 10 13 4"/></svg>
+                Return to shop
+              </a>
+              <button type="submit" class="btn-primary checkout-btn" id="btn-to-shipping">
+                Continue to Shipping
+              </button>
+            </div>
+          </form>
+        </section>
+
+        <!-- STEP 2: Shipping Method -->
+        <section class="checkout-step-panel" id="step-2" aria-labelledby="step2-title" hidden>
+          <h2 id="step2-title" class="checkout-section-title">Shipping Method</h2>
+
+          <div class="info-summary" id="info-summary" aria-label="Delivery address summary">
+            <div class="summary-address" id="summary-address"></div>
+            <button class="summary-edit" id="btn-edit-info" aria-label="Edit customer information">Edit</button>
+          </div>
+
+          <form id="form-shipping" class="checkout-form" novalidate>
+            <input type="hidden" name="csrf_token" id="csrf_shipping" />
+
+            <fieldset class="form-fieldset">
+              <legend class="fieldset-legend">Choose Delivery Option</legend>
+
+              <div class="shipping-options" role="radiogroup" aria-label="Shipping options">
+
+                <label class="shipping-option" for="shipping-standard">
+                  <input type="radio" id="shipping-standard" name="shipping_method"
+                    value="standard" checked
+                    data-price="0" data-days="5-7"
+                    aria-describedby="shipping-standard-desc" />
+                  <div class="shipping-option-body">
+                    <div class="shipping-option-info">
+                      <span class="shipping-option-name">Standard Delivery</span>
+                      <span id="shipping-standard-desc" class="shipping-option-days">5–7 business days</span>
+                    </div>
+                    <div class="shipping-option-price">
+                      <span class="shipping-free-label">Free</span>
+                      <span class="shipping-condition">on orders above &#8377;499</span>
+                    </div>
+                  </div>
+                </label>
+
+                <label class="shipping-option" for="shipping-express">
+                  <input type="radio" id="shipping-express" name="shipping_method"
+                    value="express"
+                    data-price="99" data-days="2-3"
+                    aria-describedby="shipping-express-desc" />
+                  <div class="shipping-option-body">
+                    <div class="shipping-option-info">
+                      <span class="shipping-option-name">Express Delivery</span>
+                      <span id="shipping-express-desc" class="shipping-option-days">2–3 business days</span>
+                    </div>
+                    <div class="shipping-option-price">
+                      <span>&#8377;99</span>
+                    </div>
+                  </div>
+                </label>
+
+              </div>
+            </fieldset>
+
+            <div class="form-group coupon-group">
+              <label for="coupon-code">Have a coupon code?</label>
+              <div class="coupon-input-wrap">
+                <input type="text" id="coupon-code" name="coupon"
+                  maxlength="20" placeholder="Enter coupon code"
+                  autocomplete="off"
+                  aria-describedby="coupon-status" />
+                <button type="button" class="btn-apply-coupon" id="btn-apply-coupon">Apply</button>
+              </div>
+              <span class="field-hint" id="coupon-status" aria-live="polite"></span>
+            </div>
+
+            <div class="form-actions">
+              <button type="button" class="btn-link-back" id="btn-back-to-info">
+                <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><polyline points="13 16 7 10 13 4"/></svg>
+                Back to Information
+              </button>
+              <button type="submit" class="btn-primary checkout-btn" id="btn-to-payment">
+                Continue to Payment
+              </button>
+            </div>
+          </form>
+        </section>
+
+        <!-- STEP 3: Payment -->
+        <section class="checkout-step-panel" id="step-3" aria-labelledby="step3-title" hidden>
+          <h2 id="step3-title" class="checkout-section-title">Payment</h2>
+
+          <div class="info-summary" id="payment-summary" aria-label="Order summary">
+            <div class="summary-address" id="payment-summary-address"></div>
+            <button class="summary-edit" id="btn-edit-shipping" aria-label="Edit shipping method">Edit</button>
+          </div>
+
+          <form id="form-payment" class="checkout-form" novalidate>
+            <input type="hidden" name="csrf_token" id="csrf_payment" />
+
+            <fieldset class="form-fieldset">
+              <legend class="fieldset-legend">Select Payment Method</legend>
+
+              <div class="payment-methods" role="radiogroup" aria-label="Payment methods">
+
+                <label class="payment-option" for="pay-upi">
+                  <input type="radio" id="pay-upi" name="payment_method" value="upi" checked />
+                  <div class="payment-option-body">
+                    <div class="payment-icon upi-icon" aria-hidden="true">UPI</div>
+                    <span>UPI / GPay / PhonePe / Paytm</span>
+                  </div>
+                </label>
+
+                <div class="upi-detail payment-detail active" id="upi-detail">
+                  <div class="form-group">
+                    <label for="upi-id">UPI ID <span class="required" aria-hidden="true">*</span></label>
+                    <input type="text" id="upi-id" name="upi_id"
+                      maxlength="60" placeholder="yourname@upi"
+                      autocomplete="off"
+                      pattern="[a-zA-Z0-9._\-]+@[a-zA-Z0-9]+"
+                      aria-required="true" />
+                    <span class="field-error" id="err-upi" role="alert"></span>
+                  </div>
+                </div>
+
+                <label class="payment-option" for="pay-card">
+                  <input type="radio" id="pay-card" name="payment_method" value="card" />
+                  <div class="payment-option-body">
+                    <div class="payment-icon card-icon" aria-hidden="true">
+                      <svg viewBox="0 0 28 18" fill="none" stroke="currentColor" stroke-width="1.2"><rect x="1" y="1" width="26" height="16" rx="2"/><line x1="1" y1="6" x2="27" y2="6"/><rect x="3" y="10" width="5" height="3" rx="0.5" fill="currentColor" opacity="0.4"/></svg>
+                    </div>
+                    <span>Credit / Debit Card</span>
+                  </div>
+                </label>
+
+                <div class="card-detail payment-detail" id="card-detail" hidden>
+                  <div class="form-group">
+                    <label for="card-number">Card Number <span class="required" aria-hidden="true">*</span></label>
+                    <input type="text" id="card-number" name="card_number"
+                      maxlength="19" placeholder="1234 5678 9012 3456"
+                      inputmode="numeric" autocomplete="cc-number"
+                      aria-required="true" />
+                    <span class="field-error" id="err-card-number" role="alert"></span>
+                  </div>
+                  <div class="form-row">
+                    <div class="form-group">
+                      <label for="card-expiry">Expiry <span class="required" aria-hidden="true">*</span></label>
+                      <input type="text" id="card-expiry" name="card_expiry"
+                        maxlength="5" placeholder="MM/YY"
+                        inputmode="numeric" autocomplete="cc-exp"
+                        aria-required="true" />
+                      <span class="field-error" id="err-card-expiry" role="alert"></span>
+                    </div>
+                    <div class="form-group">
+                      <label for="card-cvv">CVV <span class="required" aria-hidden="true">*</span></label>
+                      <input type="password" id="card-cvv" name="card_cvv"
+                        maxlength="4" placeholder="***"
+                        inputmode="numeric" autocomplete="cc-csc"
+                        aria-required="true" />
+                      <span class="field-error" id="err-card-cvv" role="alert"></span>
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <label for="card-name">Name on Card <span class="required" aria-hidden="true">*</span></label>
+                    <input type="text" id="card-name" name="card_name"
+                      maxlength="100" placeholder="As printed on card"
+                      autocomplete="cc-name"
+                      aria-required="true" />
+                    <span class="field-error" id="err-card-name" role="alert"></span>
+                  </div>
+                  <div class="card-security-note">
+                    <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.3" aria-hidden="true"><path d="M8 1L2 4v5c0 3 2.5 5.5 6 7 3.5-1.5 6-4 6-7V4L8 1z"/></svg>
+                    Your card details are encrypted and never stored on our servers.
+                  </div>
+                </div>
+
+                <label class="payment-option" for="pay-netbanking">
+                  <input type="radio" id="pay-netbanking" name="payment_method" value="netbanking" />
+                  <div class="payment-option-body">
+                    <div class="payment-icon nb-icon" aria-hidden="true">NB</div>
+                    <span>Net Banking</span>
+                  </div>
+                </label>
+
+                <div class="nb-detail payment-detail" id="nb-detail" hidden>
+                  <div class="form-group">
+                    <label for="bank-select">Select Bank</label>
+                    <select id="bank-select" name="bank">
+                      <option value="" disabled selected>Choose your bank</option>
+                      <option value="SBI">State Bank of India</option>
+                      <option value="HDFC">HDFC Bank</option>
+                      <option value="ICICI">ICICI Bank</option>
+                      <option value="AXIS">Axis Bank</option>
+                      <option value="KOTAK">Kotak Mahindra Bank</option>
+                      <option value="BOB">Bank of Baroda</option>
+                      <option value="PNB">Punjab National Bank</option>
+                      <option value="CANARA">Canara Bank</option>
+                      <option value="UNION">Union Bank of India</option>
+                      <option value="OTHER">Other Bank</option>
+                    </select>
+                  </div>
+                </div>
+
+                <label class="payment-option" for="pay-cod">
+                  <input type="radio" id="pay-cod" name="payment_method" value="cod" />
+                  <div class="payment-option-body">
+                    <div class="payment-icon cod-icon" aria-hidden="true">COD</div>
+                    <span>Cash on Delivery</span>
+                    <span class="cod-note">(Extra &#8377;40 handling charge)</span>
+                  </div>
+                </label>
+
+              </div>
+            </fieldset>
+
+            <fieldset class="form-fieldset">
+              <legend class="fieldset-legend">Order Confirmation</legend>
+              <div class="form-group form-checkbox">
+                <input type="checkbox" id="terms-agree" name="terms" required />
+                <label for="terms-agree">
+                  I agree to the <a href="/terms" target="_blank" rel="noopener">Terms of Service</a>
+                  and <a href="/privacy" target="_blank" rel="noopener">Privacy Policy</a>.
+                  I confirm that the products are for personal external use only.
+                  <span class="required" aria-hidden="true">*</span>
+                </label>
+              </div>
+            </fieldset>
+
+            <div class="form-actions">
+              <button type="button" class="btn-link-back" id="btn-back-to-shipping">
+                <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><polyline points="13 16 7 10 13 4"/></svg>
+                Back to Shipping
+              </button>
+              <button type="submit" class="btn-primary checkout-btn pay-btn" id="btn-place-order">
+                <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M10 2L3 6v6c0 4.5 3.5 7.5 7 9 3.5-1.5 7-4.5 7-9V6L10 2z"/></svg>
+                Place Order
+              </button>
+            </div>
+          </form>
+        </section>
+
+        <!-- ORDER CONFIRMATION -->
+        <section class="checkout-step-panel" id="step-confirm" aria-labelledby="confirm-title" hidden>
+          <div class="order-confirmed">
+            <div class="confirmed-icon" aria-hidden="true">
+              <svg viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <circle cx="40" cy="40" r="36" stroke="#2d5a27" stroke-width="1.5" fill="none"/>
+                <path d="M24 40 L34 50 L56 28" stroke="#2d5a27" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+              </svg>
+            </div>
+            <h2 id="confirm-title" class="checkout-section-title">Order Placed</h2>
+            <p class="confirm-msg">Thank you for your order. A confirmation has been sent to your email.</p>
+            <p class="confirm-order-id">Order ID: <strong id="confirm-order-id"></strong></p>
+            <div class="confirm-details" id="confirm-details"></div>
+            <a href="/" class="btn-primary confirm-btn">Continue Shopping</a>
+          </div>
+        </section>
+
+      </div>
+
+      <!-- RIGHT: Order Summary -->
+      <aside class="checkout-summary" aria-label="Order summary">
+        <div class="summary-sticky">
+          <h2 class="summary-title">Your Order</h2>
+
+          <div class="summary-items" id="summary-items">
+            <p class="summary-empty">Your cart is empty.</p>
+          </div>
+
+          <div class="summary-coupon-applied" id="summary-coupon-applied" hidden>
+            <span id="coupon-applied-label">Coupon applied</span>
+            <button class="remove-coupon" id="btn-remove-coupon" aria-label="Remove coupon">
+              &times;
+            </button>
+          </div>
+
+          <div class="summary-totals">
+            <div class="summary-row">
+              <span>Subtotal</span>
+              <span id="summary-subtotal">&#8377;0</span>
+            </div>
+            <div class="summary-row" id="discount-row" style="display:none;">
+              <span>Discount</span>
+              <span id="summary-discount" class="discount-value"></span>
+            </div>
+            <div class="summary-row">
+              <span>Shipping</span>
+              <span id="summary-shipping">Free</span>
+            </div>
+            <div class="summary-row summary-row-tax">
+              <span>GST (18%)</span>
+              <span id="summary-tax">&#8377;0</span>
+            </div>
+            <div class="summary-divider"></div>
+            <div class="summary-row summary-total-row">
+              <span>Total</span>
+              <span id="summary-total">&#8377;0</span>
+            </div>
+          </div>
+
+          <div class="summary-trust">
+            <div class="trust-row">
+              <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.3" aria-hidden="true"><path d="M8 1L2 4v5c0 3 2.5 5.5 6 7 3.5-1.5 6-4 6-7V4L8 1z"/></svg>
+              <span>256-bit SSL Encrypted</span>
+            </div>
+            <div class="trust-row">
+              <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.3" aria-hidden="true"><path d="M14 5H2M14 11H2M8 2v12"/></svg>
+              <span>100% Natural Ingredients</span>
+            </div>
+            <div class="trust-row">
+              <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.3" aria-hidden="true"><path d="M2 8a6 6 0 1 0 12 0A6 6 0 0 0 2 8z"/><path d="M10 6l-3 3-1.5-1.5"/></svg>
+              <span>30-Day Return Policy</span>
+            </div>
+          </div>
+        </div>
+      </aside>
+
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <footer class="checkout-footer" role="contentinfo">
+    <p>&copy; <span id="checkout-year"></span> Leevs Natural Cosmetics. Tirupati, Andhra Pradesh.</p>
+    <nav aria-label="Footer links">
+      <a href="/privacy">Privacy Policy</a>
+      <a href="/terms">Terms of Service</a>
+      <a href="/shipping">Shipping Policy</a>
+      <a href="/returns">Returns</a>
+      <a href="/contact">Contact</a>
+    </nav>
+  </footer>
+
+  <div class="toast" id="toast" role="alert" aria-live="assertive" aria-atomic="true"></div>
+
+  <script src="checkout.js"></script>
+</body>
+</html>
