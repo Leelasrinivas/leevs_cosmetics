@@ -2771,7 +2771,9 @@ p {
   }
 
   .about-visual {
-    display: none;
+    display: block;          /* was none */
+    order: -1;               /* show image first */
+    margin-bottom: 2rem;
   }
 
   .contact-grid {
@@ -2785,6 +2787,11 @@ p {
 
   .footer-nav {
     grid-template-columns: repeat(3, 1fr);
+  }
+
+  .founders-placeholder {
+    max-width: 320px;
+    margin: 0 auto;
   }
 }
 
@@ -2873,6 +2880,19 @@ p {
   .ritual-tab {
     flex: 1;
     padding: 0.75rem 1rem;
+  }
+  .testimonials-track {
+    grid-template-columns: 1fr;
+    gap: 1.25rem;
+    transform: none !important;
+  }
+
+  .testimonial-card {
+    padding: 1.5rem 1.25rem;
+  }
+
+  .testimonials-nav {
+    display: none; /* hide arrows + dots on mobile */
   }
 }
 
